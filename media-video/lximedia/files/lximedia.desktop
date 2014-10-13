@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+
+Type=Application
+
+Name=LXi Media Center
+GenericName=LXi Media Center
+Comment=Play media files from a PC over a local network on a DLNA capable device
+Icon=lximedia
+
+Categories=AudioVideo;Audio;QT;
+
+Exec=lximcfrontend
+TryExec=lximcfrontend
+Terminal=false

@@ -1,0 +1,11 @@
+--- lximedia.pro	2012-02-29 22:23:51.000000000 +0200
++++ lximedia.pro.new	2012-05-27 22:10:28.882103381 +0300
+@@ -2,7 +2,7 @@
+ CONFIG += ordered
+ DESTDIR = .
+ 
+-SUBDIRS += deploy ext src test
++SUBDIRS += deploy ext src
+ 
+ # Generate _version.h
+ unix {
