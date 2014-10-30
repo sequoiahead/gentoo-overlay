@@ -31,6 +31,7 @@ DEPEND="
 	media-libs/fontconfig
 	dev-db/sqlite
 	media-libs/glew
+	>=media-libs/glfw-3
 	dev-libs/openssl
 	"
 RDEPEND="${DEPEND}"
@@ -41,15 +42,22 @@ ENVD_FILE="${T}/99${PN}"
 src_install() {
 	dodir ${COCOS_DIR}
 	insinto ${COCOS_DIR}
-	doins -r build cocos extensions plugin templates tools
+	doins -r build cocos extensions external plugin templates tools
 
-	COCOS_CONSOLE_ROOT="${COCOS_DIR}/tools/cocos2d-console/bin"
+	#into ${COCOS_DIR}/tools/cocos2d-console/
+	#dobin tools/cocos2d-console/bin/cocos
 	
-	echo "COCOS_CONSOLE_ROOT=${COCOS_CONSOLE_ROOT}" >> ${ENVD_FILE}
+	echo "#!/bin/sh" > ${T}/cocos
+	echo exec python \"${COCOS_DIR}/tools/cocos2d-console/bin/cocos.py\" \"\$@\" >> ${T}/cocos
+
+	into ${ROOT}opt
+	dobin ${T}/cocos
+
+	dodoc docs/*
+
 	echo "NDK_ROOT=/opt/android-ndk" >> ${ENVD_FILE}
 	echo "ANDROID_SDK_ROOT=/opt/android-sdk-update-manager" >> ${ENVD_FILE}
 	echo "ANT_ROOT=/usr/bin" >> ${ENVD_FILE}
-	echo "PATH=${COCOS_CONSOLE_ROOT}" >> ${ENVD_FILE}
 
 	doenvd ${ENVD_FILE}
 }
