@@ -4,6 +4,8 @@
 
 EAPI=5
 
+inherit eutils
+
 DESCRIPTION="A multi-platform framework for building 2d games, interactive books, demos and other graphical applications. It works on iOS, Android, Windows Phone, OS X, Windows and Linux."
 HOMEPAGE="http://www.cocos2d-x.org"
 SRC_URI="http://www.cocos2d-x.org/filedown/cocos2d-x-${PV}.zip"
@@ -38,6 +40,10 @@ RDEPEND="${DEPEND}"
 
 COCOS_DIR="${ROOT}opt/${PN}"
 ENVD_FILE="${T}/99${PN}"
+
+src_prepare() {
+	epatch ${FILESDIR}/${P}-ndk10.patch
+}
 
 src_install() {
 	dodir ${COCOS_DIR}

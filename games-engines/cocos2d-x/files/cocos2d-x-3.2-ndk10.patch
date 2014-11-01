@@ -1,0 +1,11 @@
+--- a/cocos/3d/CCBundleReader.h
++++ b/cocos/3d/CCBundleReader.h
+@@ -87,7 +87,7 @@ class BundleReader: public cocos2d::Ref
+     /**
+      * Returns the position of the file pointer.
+      */
+-    long int tell();
++    ssize_t tell();
+ 
+     /**
+      * Sets the position of the file pointer.
