@@ -19,7 +19,7 @@ S="${WORKDIR}"
 
 src_unpack() {
 	default_src_unpack
-	unpack ./data.tar.xz
+	unpack ./data.tar.gz
 }
 
 src_prepare() {
